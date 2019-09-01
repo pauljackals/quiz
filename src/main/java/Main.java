@@ -1,11 +1,16 @@
+import java.util.Scanner;
+
 public class Main {
+
 
     public static void main(String[] args) {
 
-        String filesPath = "src/main/resources/";
+        String categoriesPath = "src/main/resources/";
 
-        Categories categories = new Categories(filesPath);
+        Quiz quiz = new Quiz(categoriesPath);
 
-        categories.print();
+        quiz.printCategories();
+
+        Scanner userInput = new Scanner(System.in);
     }
 }
