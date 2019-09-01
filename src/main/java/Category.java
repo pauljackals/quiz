@@ -67,7 +67,7 @@ public class Category {
         }
 
         Collections.shuffle(questions);
-        startQuestion();
+        addNewQuestion();
     }
 
 
@@ -84,7 +84,7 @@ public class Category {
     }
 
 
-    public void startQuestion(){
+    public void addNewQuestion(){
 
         questionCurrent = questions.get(questionsCounter);
     }
@@ -94,7 +94,7 @@ public class Category {
 
         questionsCounter++;
         boolean answerCorrect = questionCurrent.isAnswerCorrect(answerIndex);
-        startQuestion();
+        addNewQuestion();
 
         return answerCorrect;
     }

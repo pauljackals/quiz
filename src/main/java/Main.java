@@ -14,7 +14,7 @@ public class Main {
 
         quiz.printCategories();
 
-        quiz.startCategory(getCategoryFromUser(quiz));
+        quiz.addNewCategory(getCategoryFromUser(quiz));
         System.out.println("\n"+quiz.getCategoryCurrent().getName().toUpperCase()+"\n");
 
         for (int i = 0; i < 10; i++) {

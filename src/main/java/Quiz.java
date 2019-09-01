@@ -51,7 +51,7 @@ public class Quiz {
     }
 
 
-    public void startCategory(int categoryNumber){
+    public void addNewCategory(int categoryNumber){
 
         categoryCurrent = categories.get(categoryNumber);
     }
