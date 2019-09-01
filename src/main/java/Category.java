@@ -2,9 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Category {
@@ -12,10 +10,14 @@ public class Category {
 
     private String path;
     private List<Question> questions;
+    private int questionsCounter;
+    private Question questionCurrent;
 
 
     public Category (String path) {
 
+        questionsCounter=0;
+        questionCurrent =null;
         questions = new ArrayList<>();
         this.path = path;
 
@@ -65,5 +67,35 @@ public class Category {
         }
 
         Collections.shuffle(questions);
+        startQuestion();
+    }
+
+
+    public int getQuestionAnswersAmount(){
+
+        return questionCurrent.getAnswersNumber();
+    }
+
+
+    public void printQuestion(){
+
+        System.out.print(questionsCounter+". ");
+        questionCurrent.print();
+    }
+
+
+    public void startQuestion(){
+
+        questionCurrent = questions.get(questionsCounter);
+    }
+
+
+    public boolean isQuestionAnswerCorrect(int answerIndex){
+
+        questionsCounter++;
+        boolean answerCorrect = questionCurrent.isAnswerCorrect(answerIndex);
+        startQuestion();
+
+        return answerCorrect;
     }
 }

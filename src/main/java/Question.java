@@ -25,4 +25,36 @@ public class Question {
 
         answerCorrectIndex = this.answers.indexOf(answerCorrect);
     }
+
+
+    public void print(){
+
+        System.out.println(text);
+
+        for (int i = 0; i < answersNumber; i++) {
+
+            System.out.println("* "+i+". "+answers.get(i));
+        }
+    }
+
+
+    public int getAnswersNumber(){
+
+        return answersNumber;
+    }
+
+
+    public boolean isAnswerCorrect(int answerIndex){
+
+        if( answerIndex==answerCorrectIndex ){
+
+            System.out.println("Correct!\n");
+
+            return true;
+        }
+
+        System.out.println("Wrong... It's <"+answerCorrectIndex+". "+ answers.get(answerCorrectIndex)+">\n");
+
+        return false;
+    }
 }

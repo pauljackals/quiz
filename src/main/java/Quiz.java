@@ -7,16 +7,20 @@ public class Quiz {
 
 
     private List<Category> categories;
+    private Category categoryCurrent;
+    private int points;
 
 
     public Quiz(String categoriesPath){
 
+        points=0;
         categories = new ArrayList<>();
+        categoryCurrent =null;
         loadCategories(categoriesPath);
     }
 
 
-    public void loadCategories(String categoriesPath){
+    private void loadCategories(String categoriesPath){
 
         String[] files = new File(categoriesPath).list();
 
@@ -27,7 +31,6 @@ public class Quiz {
                 files[i] = categoriesPath + files[i];
 
                 categories.add(new Category(files[i]));
-
             }
         }
     }
@@ -45,5 +48,35 @@ public class Quiz {
     public int getCategoriesAmount(){
 
         return categories.size();
+    }
+
+
+    public void startCategory(int categoryNumber){
+
+        categoryCurrent = categories.get(categoryNumber);
+    }
+
+
+    public Category getCategoryCurrent(){
+
+        return categoryCurrent;
+    }
+
+
+    public boolean isQuestionAnswerCorrect(int answerIndex){
+
+        boolean questionAnswerCorrect = categoryCurrent.isQuestionAnswerCorrect(answerIndex);
+
+        if(questionAnswerCorrect){
+
+            points++;
+        }
+
+        return questionAnswerCorrect;
+    }
+
+    public void printPoints() {
+
+        System.out.println("Congratulations! You've got "+points+ " points!");
     }
 }
