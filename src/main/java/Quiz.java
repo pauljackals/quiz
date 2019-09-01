@@ -6,11 +6,12 @@ import java.util.List;
 public class Quiz {
 
 
-    private List<Category> categories = new ArrayList<>();
+    private List<Category> categories;
 
 
     public Quiz(String categoriesPath){
 
+        categories = new ArrayList<>();
         loadCategories(categoriesPath);
     }
 
@@ -38,5 +39,11 @@ public class Quiz {
 
             System.out.println(i+". "+categories.get(i).getName());
         }
+    }
+
+
+    public int getCategoriesAmount(){
+
+        return categories.size();
     }
 }
